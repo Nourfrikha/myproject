@@ -1,0 +1,10 @@
+{% extends "template.njk" %}
+{% import "public/components/member.njk" as member_macros %}
+{% import "public/components/navbar.njk" as navbar %}
+{% block body %}
+{{navbar.navbar(request.user)}}
+{% asyncEach member in members %}
+    {{ member_macros.member(member) }}
+{% endeach %}
+{% block content %} {% endblock %}
+{% endblock body %}
